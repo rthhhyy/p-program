@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Results from a simple R linear regression predicting marks from study hours.">
+  <title>Study Hours and Marks | Model Results</title>
+  <style>
+    :root { color-scheme: light; --ink: #172554; --muted: #64748b; --blue: #2563eb; --line: #dbe4f0; --surface: #fff; --page: #f3f6fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { width: min(900px, calc(100% - 32px)); margin: 48px auto; }
+    header { margin-bottom: 24px; }
+    h1 { margin: 0 0 8px; font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: -.03em; }
+    h2 { margin: 0 0 16px; font-size: 1.15rem; }
+    p { margin: 0; color: var(--muted); }
+    .card { margin: 18px 0; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 8px 24px #1725540a; }
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .metric { padding: 16px; border-radius: 12px; background: #eff6ff; }
+    .metric span { display: block; color: var(--muted); font-size: .9rem; }
+    .metric strong { display: block; margin-top: 6px; color: var(--blue); font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    caption { margin-bottom: 12px; color: var(--muted); text-align: left; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); }
+    th { background: #f8fafc; }
+    td:not(:first-child) { font-variant-numeric: tabular-nums; }
+    .note { font-size: .9rem; }
+    @media (max-width: 520px) { main { margin: 24px auto; } .card { padding: 18px; } th, td { padding: 10px 8px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Study Hours &amp; Marks</h1>
+      <p>Linear regression results from the R program (<code>Marks ~ StudyHours</code>).</p>
+    </header>
+    <section class="card" aria-labelledby="metrics-title">
+      <h2 id="metrics-title">Test-set metrics</h2>
+      <div class="metrics">
+        <div class="metric"><span>MAE</span><strong>1.3978</strong></div>
+        <div class="metric"><span>MSE</span><strong>2.0385</strong></div>
+        <div class="metric"><span>RMSE</span><strong>1.4277</strong></div>
+        <div class="metric"><span>R-squared</span><strong>0.6738</strong></div>
+      </div>
+    </section>
+    <section class="card" aria-labelledby="predictions-title">
+      <h2 id="predictions-title">Actual vs. predicted marks</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Results for the held-out test data</caption>
+          <thead><tr><th scope="col">Study hours</th><th scope="col">Actual marks</th><th scope="col">Predicted marks</th></tr></thead>
+          <tbody>
+            <tr><td>5</td><td>50</td><td>51.1069</td></tr>
+            <tr><td>6</td><td>55</td><td>56.6887</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <p class="note">Static report for the <code>set.seed(123)</code> run with an 80/20 train-test split. Run <code>student_marks.R</code> in R to generate the model output.</p>
+  </main>
+</body>
+</html>
